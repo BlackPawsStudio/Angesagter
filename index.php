@@ -54,12 +54,30 @@
       }
       break;
     case 'road':
-      $sql = 'INSERT INTO roads (login, password) VALUES (\''.$_GET['login'].'\', \''.$_GET['password'].'\')';
+      $sql = 'SELECT * FROM roads WHERE author=\'' . $_GET['login'] . '\'';
+      $result = mysqli_query($conn, $sql);
+      $songs = array_map(function($el) {
+        return $el.name;
+      }, mysqli_fetch_all($result));
+
+      if (in_array($_GET['name'], $songs)) {
+        echo json_encode('Already taken!');
+      } else {
+        $sql = 'INSERT INTO users (login, password) VALUES (\''.$_GET['login'].'\', \''.$_GET['password'].'\')';
         if ($conn->query($sql) === TRUE) {
           echo json_encode('New record created successfully');
         } else {
           echo json_encode('Error: ' . $sql . '\n' . $conn->error);
         }
+      }
+
+      $sql = 'INSERT INTO roads (login, password) VALUES (\''.$_GET['login'].'\', \''.$_GET['password'].'\')';
+      if ($conn->query($sql) === TRUE) {
+        echo json_encode('New record created successfully');
+      } else {
+        echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+      }
+      break;
   }
 
   switch ($_GET['update']) {
