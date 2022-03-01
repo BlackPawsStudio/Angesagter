@@ -18,15 +18,12 @@
 
   switch ($_GET['request']) {
     case 'user':
-      try {
-        $sql = 'SELECT * FROM users WHERE name=\'' . $_GET['login'] . '\'';
-        $result = mysqli_query($conn, $sql);
-        $user = mysqli_fetch($result);
-        echo json_encode($user);
-        break;
-      } catch (Exception $e) {
-        echo json_encode($e);
-      }
+      // $sql = 'SELECT * FROM users WHERE name=\'' . $_GET['login'] . '\'';
+      // $result = mysqli_query($conn, $sql);
+      // $user = mysqli_fetch($result);
+      // echo json_encode($user);
+      echo json_encode($_GET['login']);
+      break;
   }
 
   $conn->close();
