@@ -26,8 +26,14 @@
     case 'roads':
       $sql = 'SELECT * FROM roads WHERE author=\'' . $_GET['login'] . '\'';
       $result = mysqli_query($conn, $sql);
-      $user = mysqli_fetch_all($result);
-      echo json_encode($user);
+      $songs = mysqli_fetch_all($result);
+      echo json_encode($songs);
+      break;
+    case 'road':
+      $sql = 'SELECT * FROM roads WHERE author=\'' . $_GET['login'] . '\' and name=\''. $_GET['name'] .'\'';
+      $result = mysqli_query($conn, $sql);
+      $song = mysqli_fetch_all($result);
+      echo json_encode($song);
       break;
   }
 
@@ -47,6 +53,13 @@
         }
       }
       break;
+    case 'road':
+      $sql = 'INSERT INTO roads (login, password) VALUES (\''.$_GET['login'].'\', \''.$_GET['password'].'\')';
+        if ($conn->query($sql) === TRUE) {
+          echo json_encode('New record created successfully');
+        } else {
+          echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+        }
   }
 
   $conn->close();
