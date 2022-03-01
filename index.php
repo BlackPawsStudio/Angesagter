@@ -23,6 +23,12 @@
       $user = mysqli_fetch_all($result);
       echo json_encode($user);
       break;
+    case 'roads':
+      $sql = 'SELECT * FROM roads WHERE author=\'' . $_GET['login'] . '\'';
+      $result = mysqli_query($conn, $sql);
+      $user = mysqli_fetch_all($result);
+      echo json_encode($user);
+      break;
   }
 
   $conn->close();
