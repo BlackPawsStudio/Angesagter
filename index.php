@@ -18,7 +18,7 @@
 
   switch ($_GET['request']) {
     case 'user':
-      $sql = 'SELECT * FROM users WHERE name=\'' . $_GET['login'] . '\'';
+      $sql = 'SELECT * FROM users WHERE login=\'' . $_GET['login'] . '\'';
       $result = mysqli_query($conn, $sql);
       $user = mysqli_fetch($result);
       echo json_encode($user);
