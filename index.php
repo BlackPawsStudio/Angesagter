@@ -57,7 +57,7 @@
       $sql = 'SELECT * FROM roads WHERE author=\'' . $_GET['login'] . '\'';
       $result = mysqli_query($conn, $sql);
       $songs = array_map(function($el) {
-        return $el.name;
+        return $el['name'];
       }, mysqli_fetch_all($result));
 
       if (in_array($_GET['name'], $songs)) {
