@@ -31,5 +31,16 @@
       break;
   }
 
+  switch ($_GET['create']) {
+    case 'user':
+      $sql = 'INSERT INTO users (id, login, password) VALUES ('.$_GET['id'].', \''.$_GET['login'].'\', \''.$_GET['password'].'\'';
+      if ($conn->query($sql) === TRUE) {
+        echo json_encode('New record created successfully');
+      } else {
+        echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+      }
+      break;
+  }
+
   $conn->close();
 ?>
