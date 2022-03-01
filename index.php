@@ -64,7 +64,7 @@
 
   switch ($_GET['update']) {
     case 'road':
-      $sql = 'UPDATE road SET dots=' .$_GET['dots']. ', color=' .$_GET['color']. '  WHERE WHERE author=\'' . $_GET['login'] . '\' and name=\''. $_GET['name'] .'\'';
+      $sql = 'UPDATE road SET dots=\'' .$_GET['dots']. '\', color=\'' .$_GET['color']. '\' WHERE author=\'' . $_GET['login'] . '\' and name=\''. $_GET['name'] .'\'';
       if ($conn->query($sql) === TRUE) {
         echo json_encode('Updated successfully');
       } else {
