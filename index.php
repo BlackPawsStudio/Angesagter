@@ -33,11 +33,18 @@
 
   switch ($_GET['create']) {
     case 'user':
-      $sql = 'INSERT INTO users (login, password) VALUES (\''.$_GET['login'].'\', \''.$_GET['password'].'\')';
-      if ($conn->query($sql) === TRUE) {
-        echo json_encode('New record created successfully');
+      $sql = 'SELECT * FROM users';
+      $result = mysqli_query($conn, $sql);
+      $users = mysqli_fetch_all($result);
+      if (in_array([$_GET['login'], $_GET['password']], $users)) {
+        echo json_encode('Already taken!');
       } else {
-        echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+        $sql = 'INSERT INTO users (login, password) VALUES (\''.$_GET['login'].'\', \''.$_GET['password'].'\')';
+        if ($conn->query($sql) === TRUE) {
+          echo json_encode('New record created successfully');
+        } else {
+          echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+        }
       }
       break;
   }
