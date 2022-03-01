@@ -1,0 +1,70 @@
+h3 {
+  font-size: 4vh;
+}
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10vh;
+}
+canvas {
+  background-color: #ffffffdd;
+  border-radius: 20px;
+}
+.roads-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 450px;
+  width: 300px;
+  border-radius: 20px;
+  background-color: #80008070;
+  position: relative;
+  padding: 35px 0 15px;
+}
+h4 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 10px 0;
+  font-size: 2vh;
+}
+.roads-list {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  list-style-position: inside;
+  color: #fff;
+}
+.road {
+  width: 100%;
+  height: 70px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: all .3s;
+}
+.road-btn {
+  height: 50%;
+  border: none;
+  padding: 3px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .3s;
+}
+.road-btn:hover{
+  transform: scale(110%);
+}
+.road-btn:active{
+  transform: scale(95%);
+}
+.selected{
+  border: 3px solid #ffffff!important;
+}

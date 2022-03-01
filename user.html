@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ваши дороги</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/user.css" />
+    <link rel="icon" type="image/x-icon" href="./public/logo.svg" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <img src="./public/logo.svg" />
+        Учет дорог
+      </h1>
+      <nav>
+        <a href="./">Главная</a>
+        <a href="./user.html">Мои дороги</a>
+        <a href="./add.html">Добавить</a>
+      </nav>
+      <div class="account-btns">
+        <button class="account-btn">Войти</button>
+        <button class="account-btn">Регистр.</button>
+      </div>
+    </header>
+    <main>
+      <h3>Все ваши дороги</h3>
+      <div class="content">
+        <canvas width="550" height="450"></canvas>
+        <div class="roads-container">
+          <h4>Список элементов</h4>
+          <div class="roads-list">
+          </div>
+          <div
+            class="road"
+            id="new-road"
+            style="
+              background-color: #e08be075;
+              border: 3px solid #e08be094;
+              font-size: 5vh;
+              cursor: pointer;
+              color: #ffffff;
+              width: 90%;
+              margin-top: 10px;
+            "
+          >
+            +
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./script/render.js"></script>
+    <script src="./script/user.js"></script>
+  </body>
+</html>
