@@ -88,7 +88,7 @@
     case 'road':
       $sql = 'DELETE FROM roads WHERE author=\'' . $_GET['login'] . '\' and name=\'' . $_GET['name'] . '\'';
       if ($conn->query($sql) === TRUE) {
-        echo json_encode('Updated successfully');
+        echo json_encode('Deleted successfully');
       } else {
         echo json_encode('Error: ' . $sql . '\n' . $conn->error);
       }
