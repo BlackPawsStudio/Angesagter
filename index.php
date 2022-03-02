@@ -99,6 +99,15 @@
         echo json_encode('Error: ' . $sql . '\n' . $conn->error);
       }
       break;
+    case 'user':
+      $sql = 'DELETE FROM users WHERE login=\'' . $_GET['login'] . '\'';
+      $sqlRoads = 'DELETE FROM road WHERE author=\'' . $_GET['login'] . '\'';
+      if ($conn->query($sql) === TRUE && $conn->query($sqlRoads) === TRUE) {
+        echo json_encode('Deleted successfully');
+      } else {
+        echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+      }
+      break;
   }
 
   $conn->close();
