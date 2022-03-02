@@ -63,7 +63,6 @@
       if (in_array($_GET['name'], $songs)) {
         echo json_encode('Already taken!');
       } else {
-        $sql = 'UPDATE roads SET dots=\'' .$_GET['dots']. '\', color=\'' .$_GET['color']. '\' WHERE author=\'' . $_GET['login'] . '\' and name=\''. $_GET['name'] .'\'';
         $sql = 'INSERT INTO roads (name, dots, color, author) VALUES (\'' . $_GET['name'] . '\', \''.$_GET['dots'].'\', \''.$_GET['color'].'\', \''.$_GET['login'].'\')';
         if ($conn->query($sql) === TRUE) {
           echo json_encode('New record created successfully');
@@ -77,6 +76,17 @@
   switch ($_GET['update']) {
     case 'road':
       $sql = 'UPDATE roads SET dots=\'' .$_GET['dots']. '\', color=\'' .$_GET['color']. '\' WHERE author=\'' . $_GET['login'] . '\' and name=\''. $_GET['name'] .'\'';
+      if ($conn->query($sql) === TRUE) {
+        echo json_encode('Updated successfully');
+      } else {
+        echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+      }
+      break;
+  }
+
+  switch ($_GET['delete']) {
+    case 'road':
+      $sql = 'DELETE FROM roads WHERE author=\'' . $_GET['login'] . '\' and name=\'' . $_GET['name'] . '\'';
       if ($conn->query($sql) === TRUE) {
         echo json_encode('Updated successfully');
       } else {
