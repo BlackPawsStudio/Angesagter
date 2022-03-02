@@ -35,6 +35,12 @@
       $song = mysqli_fetch_all($result);
       echo json_encode($song);
       break;
+    case 'allRoads':
+      $sql = 'SELECT * FROM roads';
+      $result = mysqli_query($conn, $sql);
+      $song = mysqli_fetch_all($result);
+      echo json_encode($song);
+      break;
   }
 
   switch ($_GET['create']) {
