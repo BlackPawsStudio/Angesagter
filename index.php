@@ -99,7 +99,7 @@
       if (in_array($_GET['name'], $objects)) {
         echo json_encode('Already taken!');
       } else {
-        $sql = 'INSERT INTO object (name, coords, color, type, author) VALUES (\'' . $_GET['name'] . '\', \''.$_GET['coords'].'\', \''.$_GET['color'].'\', \''.$_GET['type'].'\', \''.$_GET['login'].'\')';
+        $sql = 'INSERT INTO object (name, coords, color, type, size, author) VALUES (\'' . $_GET['name'] . '\', \''.$_GET['coords'].'\', \''.$_GET['color'].'\', \''.$_GET['type'].'\', \''.$_GET['size'].'\', \''.$_GET['login'].'\')';
         if ($conn->query($sql) === TRUE) {
           echo json_encode('New record created successfully');
         } else {
