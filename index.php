@@ -132,6 +132,14 @@
         echo json_encode('Error: ' . $sql . '\n' . $conn->error);
       }
       break;
+    case 'object':
+      $sql = 'DELETE FROM object WHERE author=\'' . $_GET['login'] . '\' and name=\'' . $_GET['name'] . '\'';
+      if ($conn->query($sql) === TRUE) {
+        echo json_encode('Deleted successfully');
+      } else {
+        echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+      }
+      break;
   }
 
   $conn->close();
