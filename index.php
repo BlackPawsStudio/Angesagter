@@ -62,14 +62,32 @@
     case 'road':
       $sql = 'SELECT * FROM roads WHERE author=\'' . $_GET['login'] . '\'';
       $result = mysqli_query($conn, $sql);
-      $songs = array_map(function($el) {
+      $roads = array_map(function($el) {
         return $el['name'];
       }, mysqli_fetch_all($result));
 
-      if (in_array($_GET['name'], $songs)) {
+      if (in_array($_GET['name'], $roads)) {
         echo json_encode('Already taken!');
       } else {
         $sql = 'INSERT INTO roads (name, dots, color, author) VALUES (\'' . $_GET['name'] . '\', \''.$_GET['dots'].'\', \''.$_GET['color'].'\', \''.$_GET['login'].'\')';
+        if ($conn->query($sql) === TRUE) {
+          echo json_encode('New record created successfully');
+        } else {
+          echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+        }
+      }     
+      break;
+    case 'object':
+      $sql = 'SELECT * FROM object WHERE author=\'' . $_GET['login'] . '\'';
+      $result = mysqli_query($conn, $sql);
+      $objects = array_map(function($el) {
+        return $el['name'];
+      }, mysqli_fetch_all($result));
+
+      if (in_array($_GET['name'], $objects)) {
+        echo json_encode('Already taken!');
+      } else {
+        $sql = 'INSERT INTO objects (name, coords, color, type, author) VALUES (\'' . $_GET['name'] . '\', \''.$_GET['coords'].'\', \''.$_GET['color'].'\', \''.$_GET['type'].'\', \''.$_GET['login'].'\')';
         if ($conn->query($sql) === TRUE) {
           echo json_encode('New record created successfully');
         } else {
