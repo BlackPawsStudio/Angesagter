@@ -47,6 +47,12 @@
       $songs = mysqli_fetch_all($result);
       echo json_encode($songs);
       break;
+    case 'allObjects':
+      $sql = 'SELECT * FROM object';
+      $result = mysqli_query($conn, $sql);
+      $object = mysqli_fetch_all($result);
+      echo json_encode($object);
+      break;
   }
 
   switch ($_GET['create']) {
