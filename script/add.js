@@ -7,7 +7,7 @@ const addButton = document.getElementsByClassName("confirm")[0];
 const cancelButton = document.getElementsByClassName("confirm")[1];
 const confirmButton = document.getElementsByClassName("confirm")[2];
 
-const road = {
+let road = {
   name: "",
   dots: [],
   color: "#000000",
@@ -41,21 +41,78 @@ cancelButton.addEventListener("click", () => {
   render(road);
 });
 
-confirmButton.addEventListener("click", () => {
+confirmButton.addEventListener("click", async () => {
   if (road.name) {
-    console.log("save road", road);
+    const selectedRoad = localStorage.getItem("changeRoad");
+    const currentUser = localStorage.getItem("currentUser");
+    if (selectedRoad) {
+      // update
+      let dots = "";
+      road.dots.forEach((el) => {
+        dots += `${el.x},${el.y};`;
+      });
+      const response = await fetch(
+        `https://angesagter.herokuapp.com/?update=road&login=${currentUser}&name=${selectedRoad}&dots=${dots}&color=${road.color
+          .split("")
+          .splice(1, road.color.length)
+          .join("")}`
+      );
+      const result = await response.json();
+      console.log(result);
+      
+    } else {
+      // create
+      let dots = "";
+      road.dots.forEach((el) => {
+        dots += `${el.x},${el.y};`;
+      });
+      const response = await fetch(
+        `https://angesagter.herokuapp.com/?create=road&login=${currentUser}&name=${
+          nameInput.value
+        }&dots=${dots}&color=${road.color
+          .split("")
+          .splice(1, road.color.length)
+          .join("")}`
+      );
+      const result = await response.json();
+      console.log(result);
+    }
   } else {
     alert("Введите название дороги!");
   }
 });
 
-window.onload = () => {
+window.onload = async () => {
   const selectedRoad = localStorage.getItem("changeRoad");
+  const textPlace = document.getElementsByTagName("h3")[0];
   if (selectedRoad) {
-    console.log(selectedRoad);
+    nameInput.setAttribute("disabled", true);
+
+    textPlace.textContent = `Изменение ${selectedRoad}`;
+
+    const currentUser = localStorage.getItem("currentUser");
+    const response = await fetch(
+      `https://angesagter.herokuapp.com/?request=road&login=${currentUser}&name=${selectedRoad}`
+    );
+    const result = await response.json();
+    const logs = result[0][1].split(";");
+    const dots = logs.map((el) => {
+      return {
+        x: +el.split(",")[0],
+        y: +el.split(",")[1],
+      };
+    });
+    road = {
+      name: result[0][0],
+      dots: dots,
+      color: `#${result[0][2]}`,
+    };
+    nameInput.value = road.name;
     render(road);
   } else {
-    alert('Пожалуйста, выберите дорогу для редактирования!');
-    window.location.href.replace('./user.html')
+    textPlace.textContent = `Создание дороги`;
+
+    // alert("Пожалуйста, выберите дорогу для редактирования!");
+    // window.location.href = "./user.html";
   }
 };

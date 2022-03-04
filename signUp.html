@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Учет дорог</title>
+    <title>Регистрация</title>
     <link rel="stylesheet" href="./styles/main.css" />
-    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/logIn.css" />
     <link rel="icon" type="image/x-icon" href="./public/logo.svg" />
   </head>
   <body>
@@ -26,11 +26,17 @@
       </div>
     </header>
     <main>
-      <h3>Дороги всех пользователей</h3>
-      <canvas width="550" height="450"></canvas>
+      <form>
+        <h3>Создайте аккаунт</h3>
+        <input type="text" placeholder="Введите логин" required>
+        <input type="password" placeholder="Введите пароль" required>
+        <div class="buttons">
+          <button class="submit">Подтвердить</button>
+          <button class="submit">Отменить</button>
+        </div>
+      </form>
     </main>
     <script src="./script/main.js"></script>
-    <script src="./script/render.js"></script>
-    <script src="./script/index.js"></script>
+    <script src="./script/signUp.js"></script>
   </body>
 </html>

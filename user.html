@@ -7,9 +7,28 @@
     <title>Ваши дороги</title>
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/user.css" />
+    <link rel="stylesheet" href="./styles/popup.css" />
     <link rel="icon" type="image/x-icon" href="./public/logo.svg" />
   </head>
   <body>
+    <div class="popup">
+      <div class="modal">
+        <h3>Создание объекта</h3>
+        <input type="name" placeholder="Введите имя" class="obj-input" />
+        <input type="name" placeholder="Введите x" class="obj-input" />
+        <input type="name" placeholder="Введите y" class="obj-input" />
+        <p id="size-text">Выберите размер: 15</p>
+        <input type="range" min="1" max="100" value="15" id="size-input">
+        <div class="color-input">
+          Введите цвет
+          <input type="color" class="obj-input" />
+        </div>
+        <div class="obj-buttons">
+          <button class="obj-submit">Сохранить</button>
+          <button class="obj-submit">Отмена</button>
+        </div>
+      </div>
+    </div>
     <header>
       <h1>
         <img src="./public/logo.svg" />
@@ -31,8 +50,7 @@
         <canvas width="550" height="450"></canvas>
         <div class="roads-container">
           <h4>Список элементов</h4>
-          <div class="roads-list">
-          </div>
+          <div class="roads-list"></div>
           <div
             class="road"
             id="new-road"
@@ -48,10 +66,28 @@
           >
             +
           </div>
+          <div
+            class="road"
+            id="obst"
+            style="
+              background-color: #e08be075;
+              border: 3px solid #e08be094;
+              font-size: 3vh;
+              cursor: pointer;
+              color: #ffffff;
+              width: 90%;
+              margin-top: 10px;
+            "
+          >
+            Добавить объект
+          </div>
         </div>
       </div>
     </main>
+    <script src="./script/redirector.js"></script>
+    <script src="./script/main.js"></script>
     <script src="./script/render.js"></script>
     <script src="./script/user.js"></script>
+    <script src="./script/popup.js"></script>
   </body>
 </html>

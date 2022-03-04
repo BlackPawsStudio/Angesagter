@@ -1,22 +1,37 @@
-const roads = [
-  {
-    id: 0,
-    name: "a",
-    dots: [
-      { x: 100, y: 200 },
-      { x: 200, y: 300 },
-    ],
-    color: "#ff0000",
-  },
-  {
-    id: 1,
-    name: "b",
-    dots: [
-      { x: 300, y: 400 },
-      { x: 200, y: 200 },
-    ],
-    color: "#000000",
-  },
-];
-
-renderRoads(roads)
+window.onload = async () => {
+  const response = await fetch(
+    `https://angesagter.herokuapp.com/?request=allRoads`
+  );
+  const result = await response.json();
+  const roads = result.map((el) => {
+    const logs = el[1].split(";");
+    const dots = logs.map((el) => {
+      return {
+        x: +el.split(",")[0],
+        y: +el.split(",")[1],
+      };
+    });
+    return {
+      name: el[0],
+      dots: dots,
+      color: `#${el[2]}`,
+    };
+  });
+  const objResponse = await fetch(
+    `https://angesagter.herokuapp.com/?request=allObjects`
+  );
+  const objResult = await objResponse.json();
+ const objects = objResult.map((el) => {
+    const x = +el[1].split(",")[0];
+    const y = +el[1].split(",")[1];
+    return {
+      name: el[0],
+      x: x,
+      y: y,
+      color: `#${el[2]}`,
+      type: el[3],
+      size: el[4],
+    };
+  });
+  renderRoads(roads, objects);
+};

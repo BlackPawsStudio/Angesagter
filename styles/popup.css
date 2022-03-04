@@ -1,0 +1,61 @@
+.popup{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000cc;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s;
+  visibility: hidden;
+  opacity: 0;
+}
+.show{
+  visibility: visible;
+  opacity: 100;
+}
+.modal{
+  width: 300px;
+  height: 400px;
+  background-color: aliceblue;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+input{
+  width: 70%;
+  padding: 5px;
+  border: 1px solid #111;
+  border-radius: 10px;
+}
+.obj-buttons{
+  height: 10%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.obj-submit{
+  width: 30%;
+  height: 100%;
+  border: 1px solid #111;
+  border-radius: 10px;
+  transition: all .3s;
+  cursor: pointer;
+}
+.obj-submit:hover{
+  transform: scale(110%);
+}
+.obj-submit:active{
+  transform: scale(95%);
+}
+.color-input{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
