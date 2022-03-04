@@ -41,6 +41,12 @@
       $song = mysqli_fetch_all($result);
       echo json_encode($song);
       break;
+    case 'objects':
+      $sql = 'SELECT * FROM object WHERE author=\'' . $_GET['login'] . '\'';
+      $result = mysqli_query($conn, $sql);
+      $songs = mysqli_fetch_all($result);
+      echo json_encode($songs);
+      break;
   }
 
   switch ($_GET['create']) {
