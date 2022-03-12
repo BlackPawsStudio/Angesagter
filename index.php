@@ -53,6 +53,12 @@
       $object = mysqli_fetch_all($result);
       echo json_encode($object);
       break;
+    case 'descr':
+      $sql = 'SELECT * FROM descr WHERE author=\'' . $_GET['login'] . '\' and name=\''. $_GET['name'] .'\'';
+      $result = mysqli_query($conn, $sql);
+      $song = mysqli_fetch_all($result);
+      echo json_encode($song);
+      break;
   }
 
   switch ($_GET['create']) {
@@ -107,11 +113,27 @@
         }
       }     
       break;
+    case 'descr':
+      $sql = 'INSERT INTO descr (name, author, text) VALUES (\''.$_GET['name'].'\', \''.$_GET['login'].'\', \'\')';
+      if ($conn->query($sql) === TRUE) {
+        echo json_encode('New record created successfully');
+      } else {
+        echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+      }
+      break;
   }
 
   switch ($_GET['update']) {
     case 'road':
       $sql = 'UPDATE roads SET dots=\'' .$_GET['dots']. '\', color=\'' .$_GET['color']. '\' WHERE author=\'' . $_GET['login'] . '\' and name=\''. $_GET['name'] .'\'';
+      if ($conn->query($sql) === TRUE) {
+        echo json_encode('Updated successfully');
+      } else {
+        echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+      }
+      break;
+    case 'descr':
+      $sql = 'UPDATE descr SET text=\'' .$_GET['text']. '\' WHERE author=\'' . $_GET['login'] . '\' and name=\''. $_GET['name'] .'\'';
       if ($conn->query($sql) === TRUE) {
         echo json_encode('Updated successfully');
       } else {
@@ -129,10 +151,19 @@
         echo json_encode('Error: ' . $sql . '\n' . $conn->error);
       }
       break;
+    case 'descr':
+      $sql = 'DELETE FROM descr WHERE author=\'' . $_GET['login'] . '\' and name=\'' . $_GET['name'] . '\'';
+      if ($conn->query($sql) === TRUE) {
+        echo json_encode('Deleted successfully');
+      } else {
+        echo json_encode('Error: ' . $sql . '\n' . $conn->error);
+      }
+      break;
     case 'user':
       $sql = 'DELETE FROM users WHERE login=\'' . $_GET['login'] . '\'';
       $sqlRoads = 'DELETE FROM roads WHERE author=\'' . $_GET['login'] . '\'';
-      if ($conn->query($sql) === TRUE && $conn->query($sqlRoads) === TRUE) {
+      $sqlDescrs = 'DELETE FROM descr WHERE author=\'' . $_GET['login'] . '\'';
+      if ($conn->query($sql) === TRUE && $conn->query($sqlRoads) === TRUE && $conn->query($sqlDescrs) === TRUE) {
         echo json_encode('Deleted successfully');
       } else {
         echo json_encode('Error: ' . $sql . '\n' . $conn->error);
