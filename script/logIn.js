@@ -18,9 +18,9 @@ confirmBtn.addEventListener("click", async () => {
   const result = await response.json();
   if (result.length !== 0) {
     if (result[0][1] === password.value) {
-      location.href = "./user.html";
+      location.href = "./user";
       localStorage.setItem("currentUser", result[0][0]);
-      window.location.href = "./user.html";
+      window.location.href = "./user";
     } else {
       alert("Неверный пароль!");
     }

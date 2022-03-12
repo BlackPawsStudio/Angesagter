@@ -59,7 +59,7 @@ confirmButton.addEventListener("click", async () => {
       );
       const result = await response.json();
       console.log(result);
-      location.href = './user.html';
+      location.href = './user';
     } else {
       // create
       let dots = "";
@@ -114,8 +114,5 @@ window.onload = async () => {
     render(road);
   } else {
     textPlace.textContent = `Создание дороги`;
-
-    // alert("Пожалуйста, выберите дорогу для редактирования!");
-    // window.location.href = "./user.html";
   }
 };

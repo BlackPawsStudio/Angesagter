@@ -23,10 +23,10 @@ if (user) {
   });
 } else {
   logIn.addEventListener('click', async () => {
-    window.location.href = './logIn.html';
+    window.location.href = './logIn';
   })
   
   signUp.addEventListener("click", async () => {
-    window.location.href = "./signUp.html";
+    window.location.href = "./signUp";
   });
 }  

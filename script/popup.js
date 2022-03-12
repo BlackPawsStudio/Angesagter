@@ -24,7 +24,7 @@ submitBtn.addEventListener("click", async () => {
   );
   const result = await response.json();
   console.log(result);
-  location.href = './user.html'
+  location.href = './user'
   nameInput.value = '';
   xInput.value = "";
   yInput.value = "";

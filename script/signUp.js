@@ -17,7 +17,7 @@ confirmBtn.addEventListener("click", async () => {
   const result = await response.json();
   if (result[0] === "N") {
     localStorage.setItem("currentUser", result[0][0]);
-    window.location.href = "./user.html";
+    window.location.href = "./user";
   } else if (result[0] === "A") {
     alert("Логин уже занят!");
   } else {

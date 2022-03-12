@@ -58,7 +58,7 @@ const initFill = () => {
   for (let i = 0; i < changeRoad.length; i++) {
     changeRoad[i].addEventListener("click", () => {
       localStorage.setItem("changeRoad", roadName[i].innerHTML);
-      window.location.href = "./add.html";
+      window.location.href = "./add";
     });
   }
 
@@ -93,7 +93,7 @@ const initFill = () => {
 };
 
 newRoad.addEventListener("click", () => {
-  window.location.href = "./add.html";
+  window.location.href = "./add";
   localStorage.removeItem("changeRoad");
 });
 
@@ -142,6 +142,6 @@ window.onload = async () => {
       initFill();
     }
   } else {
-    location.href = "./logIn.html";
+    location.href = "./logIn";
   }
 };
