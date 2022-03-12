@@ -10,17 +10,21 @@ const sizeText = document.getElementById("size-text");
 const submitBtn = document.getElementsByClassName("obj-submit")[0];
 const cancelBtn = document.getElementsByClassName("obj-submit")[1];
 
+const slider = document.getElementsByClassName('slider-input')[0];
+const thumb = document.getElementsByClassName('slider-thumb')[0];
+
+let objSize = 15;
+
 submitBtn.addEventListener("click", async () => {
   const coords = `${xInput.value}, ${yInput.value}`;
   const color = colorInput.value.split("").splice(1, colorInput.value.length - 1).join("");
-  console.log(color);
   const currUser = localStorage.getItem("currentUser");
   const response = await fetch(
-    `https://angesagter.herokuapp.com/?create=object&name=${nameInput.value}&coords=${coords}&color=${color}&type=square&size=${sizeInput.value}&login=${currUser}`
+    `https://angesagter.herokuapp.com/?create=object&name=${nameInput.value}&coords=${coords}&color=${color}&type=${slider.checked ? 'circle' : 'square'}&size=${sizeInput.value}&login=${currUser}`
   );
   const result = await response.json();
-  location.href = './user.html'
   console.log(result);
+  location.href = './user.html'
   nameInput.value = '';
   xInput.value = "";
   yInput.value = "";
@@ -32,4 +36,15 @@ cancelBtn.addEventListener("click", () => {
 
 sizeInput.addEventListener("input", () => {
   sizeText.innerHTML = `Выберите размер: ${sizeInput.value}`;
+  objSize = sizeInput.value
 });
+
+slider.addEventListener('click', () => {
+  if (slider.checked) {
+    thumb.classList.add('move');
+    thumb.innerHTML = 'Круг';
+  } else {
+    thumb.classList.remove("move");
+    thumb.innerHTML = "Квадрат";
+  }
+})

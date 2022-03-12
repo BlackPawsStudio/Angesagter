@@ -41,7 +41,6 @@ const renderRoads = (roads, objects) => {
       ctx.fillStyle = obj.color;
       ctx.beginPath();
       const distance = Math.sqrt(Math.pow(obj.size / 2, 2) + Math.pow(obj.size / 2, 2));
-      console.log(distance);
       if (obj.type === "square") {
         ctx.rect(obj.x - distance, obj.y - distance, obj.size, obj.size);
       }

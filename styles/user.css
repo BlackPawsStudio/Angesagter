@@ -68,3 +68,28 @@ h4 {
 .selected{
   border: 3px solid #ffffff!important;
 }
+.road-info{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  transform: translateX(-200%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: #ae33ae;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  color: #fff;
+  text-align: center;
+  transition: all .3s;
+}
+textarea{
+  height: 90%;
+  width: 90%;
+  padding: 5px;
+}

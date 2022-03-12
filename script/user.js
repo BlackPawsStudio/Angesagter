@@ -14,7 +14,7 @@ const newObj = document.getElementById("obst");
 let roads = [];
 let objects = [];
 
-let selected = false;
+let selected = '';
 
 const initFill = () => {
   renderRoads(roads, objects);
@@ -38,17 +38,19 @@ const initFill = () => {
   });
 
   for (let i = 0; i < lightRoad.length; i++) {
-    lightRoad[i].addEventListener("click", () => {
+    lightRoad[i].addEventListener("click", async () => {
       for (let y = 0; y < roadElem.length; y++) {
         roadElem[y].classList.remove("selected");
       }
       if (!selected) {
         roadElem[i].classList.add("selected");
-        selected = true;
+        selected = roads[i].name;
         render(roads[i]);
+        await displayInfo(selected);
       } else {
-        selected = false;
         renderRoads(roads, objects);
+        await updateInfo(selected)
+        selected = '';
       }
     });
   }
@@ -120,7 +122,6 @@ window.onload = async () => {
         color: `#${el[2]}`,
       };
     });
-    console.log(result, roads);
     const objResponse = await fetch(
       `https://angesagter.herokuapp.com/?request=objects&login=${userLogin}`
     );

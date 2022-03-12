@@ -18,10 +18,14 @@
         <input type="name" placeholder="Введите x" class="obj-input" />
         <input type="name" placeholder="Введите y" class="obj-input" />
         <p id="size-text">Выберите размер: 15</p>
-        <input type="range" min="1" max="100" value="15" id="size-input">
+        <input type="range" min="1" max="100" value="15" id="size-input" />
         <div class="color-input">
           Введите цвет
           <input type="color" class="obj-input" />
+        </div>
+        <div class="slider">
+          <div class="slider-thumb">Квадрат</div>
+          <input type="checkbox" class="slider-input" />
         </div>
         <div class="obj-buttons">
           <button class="obj-submit">Сохранить</button>
@@ -49,6 +53,12 @@
       <div class="content">
         <canvas width="550" height="450"></canvas>
         <div class="roads-container">
+          <div class="road-info">
+            <h5>Информация о дороге</h5>
+            <textarea>
+              жопа жопа жопа жопа жопа жопа жопа жопа жопа жопа жопа жопа жопа жопа жопа 
+            </textarea>
+          </div>
           <h4>Список элементов</h4>
           <div class="roads-list"></div>
           <div
@@ -89,5 +99,6 @@
     <script src="./script/render.js"></script>
     <script src="./script/user.js"></script>
     <script src="./script/popup.js"></script>
+    <script src="./script/description.js"></script>
   </body>
 </html>
