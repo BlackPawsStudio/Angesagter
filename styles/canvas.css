@@ -1,0 +1,60 @@
+.canvas-container{
+  position: relative;
+  width: 550px;
+  height: 450px;
+}
+.canvas-v{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 48px;
+  opacity: 50%;
+  overflow: hidden;
+}
+.canvas-line{
+  height: 100%;
+  width: 0;
+  border-left: 2px dashed #000;
+  text-align: start;
+  font-size: 1.5vh;
+}
+.canvas-line:first-child, .canvas-line:last-child{
+  opacity: 0;
+}
+
+.canvas-h{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  row-gap: 48px;
+  opacity: 50%;
+}
+.canvas-row{
+  height: 0;
+  width: 100%;
+  border-top: 2px dashed #000;
+  text-align: start;
+  font-size: 1.5vh;
+}
+.canvas-row:first-child, .canvas-row:last-child{
+  opacity: 0;
+}
+
+.canvas-start{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 2vh;
+  opacity: 50%;
+}

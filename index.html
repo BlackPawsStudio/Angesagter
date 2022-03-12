@@ -7,6 +7,7 @@
     <title>Учет дорог</title>
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/canvas.css" />
     <link rel="icon" type="image/x-icon" href="./public/logo.svg" />
   </head>
   <body>
@@ -27,7 +28,36 @@
     </header>
     <main>
       <h3>Дороги всех пользователей</h3>
-      <canvas width="550" height="450"></canvas>
+      <div class="canvas-container">
+          <div class="canvas-h">
+            <span class="canvas-row">0</span>
+            <span class="canvas-row">50</span>
+            <span class="canvas-row">100</span>
+            <span class="canvas-row">150</span>
+            <span class="canvas-row">200</span>
+            <span class="canvas-row">250</span>
+            <span class="canvas-row">300</span>
+            <span class="canvas-row">350</span>
+            <span class="canvas-row">400</span>
+            <span class="canvas-row">450</span>
+          </div>
+          <div class="canvas-v">
+            <span class="canvas-line">0</span>
+            <span class="canvas-line">50</span>
+            <span class="canvas-line">100</span>
+            <span class="canvas-line">150</span>
+            <span class="canvas-line">200</span>
+            <span class="canvas-line">250</span>
+            <span class="canvas-line">300</span>
+            <span class="canvas-line">350</span>
+            <span class="canvas-line">400</span>
+            <span class="canvas-line">450</span>
+            <span class="canvas-line">500</span>
+            <span class="canvas-line">550</span>
+          </div>
+          <span class="canvas-start">0</span>
+          <canvas width="550" height="450"></canvas>
+        </div>
     </main>
     <script src="./script/main.js"></script>
     <script src="./script/render.js"></script>

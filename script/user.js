@@ -46,7 +46,7 @@ const initFill = () => {
         roadElem[i].classList.add("selected");
         selected = roads[i].name;
         render(roads[i]);
-        await displayInfo(selected);
+        await displayInfo(roads[i]);
       } else {
         renderRoads(roads, objects);
         await updateInfo(selected)

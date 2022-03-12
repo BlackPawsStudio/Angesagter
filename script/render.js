@@ -40,12 +40,16 @@ const renderRoads = (roads, objects) => {
       ctx.strokeStyle = obj.color;
       ctx.fillStyle = obj.color;
       ctx.beginPath();
-      const distance = Math.sqrt(Math.pow(obj.size / 2, 2) + Math.pow(obj.size / 2, 2));
       if (obj.type === "square") {
-        ctx.rect(obj.x - distance, obj.y - distance, obj.size, obj.size);
+        ctx.rect(
+          obj.x - obj.size / 2,
+          obj.y - obj.size / 2,
+          obj.size,
+          obj.size
+        );
       }
       if (obj.type === 'circle') {
-        ctx.arc(obj.x - distance, obj.y - distance, obj.size, 0, 360);
+        ctx.arc(obj.x - obj.size, obj.y - obj.size, obj.size, 0, 360);
       }
       ctx.fill();
       ctx.stroke();
