@@ -11,7 +11,7 @@ const getDistance = (x1, y1, x2, y2) => {
 }
 
 const displayInfo = async (road) => {
-  roadInfo.style.width = '50%';
+  roadInfo.style.width = '200px';
   const userLogin = localStorage.getItem("currentUser");
   const response = await fetch(
     `https://angesagter.herokuapp.com/?request=descr&login=${userLogin}&name=${road.name}`

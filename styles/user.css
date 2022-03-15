@@ -6,6 +6,7 @@ h3 {
   align-items: center;
   justify-content: center;
   column-gap: 10vh;
+  position: relative;
 }
 canvas {
   background-color: #ffffffdd;
@@ -74,7 +75,7 @@ h4 {
   height: 100%;
   width: 0;
   overflow: hidden;
-  transform: translateX(-200%);
+  transform: translateX(-150%);
   display: flex;
   align-items: center;
   justify-content: space-between;
