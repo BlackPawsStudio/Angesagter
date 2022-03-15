@@ -163,7 +163,8 @@
       $sql = 'DELETE FROM users WHERE login=\'' . $_GET['login'] . '\'';
       $sqlRoads = 'DELETE FROM roads WHERE author=\'' . $_GET['login'] . '\'';
       $sqlDescrs = 'DELETE FROM descr WHERE author=\'' . $_GET['login'] . '\'';
-      if ($conn->query($sql) === TRUE && $conn->query($sqlRoads) === TRUE && $conn->query($sqlDescrs) === TRUE) {
+      $sqlObj = 'DELETE FROM object WHERE author=\'' . $_GET['login'] . '\'';
+      if ($conn->query($sql) === TRUE && $conn->query($sqlRoads) === TRUE && $conn->query($sqlDescrs) === TRUE && $conn->query($sqlObj) === TRUE) {
         echo json_encode('Deleted successfully');
       } else {
         echo json_encode('Error: ' . $sql . '\n' . $conn->error);
